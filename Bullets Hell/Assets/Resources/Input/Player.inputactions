@@ -16,12 +16,12 @@
                 },
                 {
                     "name": "Focus",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "99de7dac-526a-488e-a93b-b1ce76f12a16",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Fire",
@@ -147,10 +147,10 @@
                 {
                     "name": "",
                     "id": "dec65aa8-7680-4e1e-824b-30530ebd6a7d",
-                    "path": "",
+                    "path": "<Keyboard>/shift",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "Focus",
                     "isComposite": false,
                     "isPartOfComposite": false

@@ -22,12 +22,12 @@ public class CharacterControler : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
 
     }
+
     private void FixedUpdate()
     {
         direction = inputManager.OnMove();
         velocity = movementSpeed * Time.fixedDeltaTime * direction;
         transform.position += (Vector3)velocity;
-        Debug.Log(velocity);
     }
 
 }
