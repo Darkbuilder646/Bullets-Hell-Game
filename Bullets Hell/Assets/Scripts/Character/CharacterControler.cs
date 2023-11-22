@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class CharacterControler : MonoBehaviour
@@ -22,7 +19,7 @@ public class CharacterControler : MonoBehaviour
     }
     private void Start()
     {
-        inputManager = InputManager.GetInstance();
+        inputManager = GameManager.InputManager;
     }
 
     private void FixedUpdate()

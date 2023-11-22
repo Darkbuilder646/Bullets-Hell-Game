@@ -3,27 +3,8 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    private static InputManager instance;
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private CharacterControler characterControler;
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-    }
-
-    public static InputManager GetInstance()
-    {
-        return instance;
-    }
 
     public PlayerInput GetInput()
     {

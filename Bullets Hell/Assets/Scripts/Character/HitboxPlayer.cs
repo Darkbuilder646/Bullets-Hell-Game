@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HitboxPlayer : MonoBehaviour
@@ -16,6 +14,7 @@ public class HitboxPlayer : MonoBehaviour
         if(other.gameObject.CompareTag("Bullet"))
         {
             characterControler.IsDead = true;
+            GameManager.RespawnManager.RespawnPlayer(characterControler);
         }
     }
 }
