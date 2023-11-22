@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class CharacterControler : MonoBehaviour
 {
     [SerializeField] private float movementSpeed = 10f;
+    [SerializeField] private bool isDead = false;
 
     private InputManager inputManager;
     private Vector2 direction = Vector2.zero;
@@ -13,7 +14,7 @@ public class CharacterControler : MonoBehaviour
     private Rigidbody2D rb2D;
 
     public Vector2 Direction { get => direction; set => direction = value; }
-
+    public bool IsDead { get => isDead; set => isDead = value; }
 
     private void Awake()
     {
@@ -25,6 +26,16 @@ public class CharacterControler : MonoBehaviour
     }
 
     private void FixedUpdate()
+    {
+        if (isDead) 
+        {
+            gameObject.SetActive(false);
+            return; 
+        }
+        ComputeMovement();
+    }
+
+    private void ComputeMovement()
     {
         direction = inputManager.OnMove();
         velocity = movementSpeed * Time.fixedDeltaTime * direction;
