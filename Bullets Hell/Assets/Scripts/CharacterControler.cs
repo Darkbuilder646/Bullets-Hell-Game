@@ -17,17 +17,18 @@ public class CharacterControler : MonoBehaviour
 
     private void Awake()
     {
-        inputManager = InputManager.GetInstance();
-
         rb2D = GetComponent<Rigidbody2D>();
-
+    }
+    private void Start()
+    {
+        inputManager = InputManager.GetInstance();
     }
 
     private void FixedUpdate()
     {
         direction = inputManager.OnMove();
         velocity = movementSpeed * Time.fixedDeltaTime * direction;
-        transform.position += (Vector3)velocity;
+        rb2D.MovePosition(rb2D.position + velocity);
     }
 
 }

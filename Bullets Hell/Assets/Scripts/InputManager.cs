@@ -9,13 +9,15 @@ public class InputManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null)
+        if (instance == null)
         {
-            Destroy(this);
-            return;
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
-        instance = this;
-        DontDestroyOnLoad(this.gameObject);
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     public static InputManager GetInstance()
