@@ -11,6 +11,7 @@ public class RespawnManager : MonoBehaviour
     public void RespawnPlayer(CharacterControler player)
     {
         StartCoroutine(Respawn(player));
+        //Todo: Invinsibility on respawn
     }
 
     IEnumerator Respawn(CharacterControler player)
