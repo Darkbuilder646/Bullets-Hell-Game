@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour
     {
         if (currentTime >= lifetime)
         {
-            // gameObject.SetActive(false);
+            gameObject.SetActive(false);
             currentTime = 0f;
             return;
         }

@@ -61,7 +61,7 @@ public class BulletsSpawner : MonoBehaviour
     private void Fire()
     {
         Bullet bullet = GetPooledBullet();
-        if (bullet)
+        if (bullet && !bullet.gameObject.activeSelf)
         {
             bullet.gameObject.SetActive(true);
             bullet.transform.SetPositionAndRotation(transform.position, transform.rotation);
