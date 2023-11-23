@@ -123,6 +123,56 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &124882637
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 124882639}
+  - component: {fileID: 124882638}
+  m_Layer: 0
+  m_Name: Bullets Spawner 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &124882638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124882637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d5409d8441cd44469a992c8a1f8fc31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1999239333778592186, guid: f49aee56ace90d04592e13a4b97096f3, type: 3}
+  spawnerType: 0
+  doubleSpiralOffset: 180
+  reverseRotation: 0
+  fireRate: 3
+  poolSize: 15
+--- !u!4 &124882639
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124882637}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0.5000004, w: 0.86602515}
+  m_LocalPosition: {x: 0, y: 4, z: 0}
+  m_LocalScale: {x: 1, y: 0, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -60}
 --- !u!1 &155707846
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,14 +898,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d5409d8441cd44469a992c8a1f8fc31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 8618450917305759924, guid: a123aeb7cd5077a4a9f72ed7b99f8cbc, type: 3}
-  bulletSpeed: 5
-  bulletLifeTime: 2
+  bulletPrefab: {fileID: 162667413262220659, guid: 9e8c79686dde0c44095e14b523eb917b, type: 3}
   spawnerType: 1
   doubleSpiralOffset: 180
   reverseRotation: 1
-  fireRate: 0.1
-  poolSize: 20
+  fireRate: 0.2
+  poolSize: 40
 --- !u!4 &750570580
 Transform:
   m_ObjectHideFlags: 0
@@ -1106,6 +1154,56 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!1 &1211289289
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1211289291}
+  - component: {fileID: 1211289290}
+  m_Layer: 0
+  m_Name: Bullets Spawner 3 bis
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1211289290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211289289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d5409d8441cd44469a992c8a1f8fc31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1999239333778592186, guid: f49aee56ace90d04592e13a4b97096f3, type: 3}
+  spawnerType: 0
+  doubleSpiralOffset: 180
+  reverseRotation: 0
+  fireRate: 3
+  poolSize: 15
+--- !u!4 &1211289291
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211289289}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0.86602515, w: 0.5000004}
+  m_LocalPosition: {x: 0, y: 4, z: 0}
+  m_LocalScale: {x: 1, y: 0, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -120}
 --- !u!1 &1310460456
 GameObject:
   m_ObjectHideFlags: 0
@@ -1542,13 +1640,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d5409d8441cd44469a992c8a1f8fc31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 8618450917305759924, guid: a123aeb7cd5077a4a9f72ed7b99f8cbc, type: 3}
-  bulletSpeed: 5
-  bulletLifeTime: 2
+  bulletPrefab: {fileID: 6987518048875708338, guid: 1fb7758c00d91c24bb4f0e8818ca0b4c, type: 3}
   spawnerType: 2
   doubleSpiralOffset: 180
   reverseRotation: 0
-  fireRate: 0.1
+  fireRate: 0.5
   poolSize: 40
 --- !u!4 &1927810513
 Transform:
@@ -1671,8 +1767,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 155707848}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1786,3 +1882,5 @@ SceneRoots:
   - {fileID: 431772406}
   - {fileID: 1927810513}
   - {fileID: 750570580}
+  - {fileID: 124882639}
+  - {fileID: 1211289291}
