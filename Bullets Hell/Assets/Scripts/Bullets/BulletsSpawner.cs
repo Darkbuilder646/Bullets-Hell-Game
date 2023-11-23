@@ -7,7 +7,8 @@ public class BulletsSpawner : MonoBehaviour
     enum SpawnerType
     {
         Straight,
-        Spin
+        Spiral,
+        DoubleSpiral
     }
 
     [Space]
@@ -19,6 +20,9 @@ public class BulletsSpawner : MonoBehaviour
     [Space]
     [Header("Spawner")]
     [SerializeField] private SpawnerType spawnerType;
+    [SerializeField] private float doubleSpiralOffset = 180f;
+    [SerializeField] private bool reverseRotation = false;
+
     [SerializeField] private float fireRate = 1f;
     [SerializeField] private int poolSize = 20;
 
@@ -47,24 +51,31 @@ public class BulletsSpawner : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-        if (spawnerType == SpawnerType.Spin)
+        if (spawnerType == SpawnerType.Spiral || spawnerType == SpawnerType.DoubleSpiral)
         {
-            transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + 1f);
+            float rotationAmount = reverseRotation ? -1f : 1f;
+
+            if (spawnerType == SpawnerType.DoubleSpiral && timer >= fireRate)
+            {
+                Fire(rotationAmount * doubleSpiralOffset);
+            }
+
+            transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + rotationAmount);
         }
         if (timer >= fireRate)
         {
-            Fire();
+            Fire(0f); //? Base angle
             timer = 0f;
         }
     }
 
-    private void Fire()
+    private void Fire(float angleOffset)
     {
         Bullet bullet = GetPooledBullet();
         if (bullet && !bullet.gameObject.activeSelf)
         {
             bullet.gameObject.SetActive(true);
-            bullet.transform.SetPositionAndRotation(transform.position, transform.rotation);
+            bullet.transform.SetPositionAndRotation(transform.position, Quaternion.Euler(0f, 0f, transform.eulerAngles.z + angleOffset));
             bullet.Speed = bulletSpeed;
             bullet.Lifetime = bulletLifeTime;
         }
