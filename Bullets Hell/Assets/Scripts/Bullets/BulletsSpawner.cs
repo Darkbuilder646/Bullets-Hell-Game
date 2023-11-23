@@ -14,15 +14,15 @@ public class BulletsSpawner : MonoBehaviour
     [Space]
     [Header("Bullets Value")]
     [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private float bulletSpeed = 5f;
-    [SerializeField] private float bulletLifeTime = 5f;
+    // [SerializeField] private float bulletSpeed = 5f;
+    // [SerializeField] private float bulletLifeTime = 5f;
 
     [Space]
     [Header("Spawner")]
     [SerializeField] private SpawnerType spawnerType;
     [SerializeField] private float doubleSpiralOffset = 180f;
     [SerializeField] private bool reverseRotation = false;
-
+    [Space]
     [SerializeField] private float fireRate = 1f;
     [SerializeField] private int poolSize = 20;
 
@@ -72,12 +72,16 @@ public class BulletsSpawner : MonoBehaviour
     private void Fire(float angleOffset)
     {
         Bullet bullet = GetPooledBullet();
+        if(bullet.gameObject.activeSelf)
+        {
+            bullet.KillBullet();
+        }
         if (bullet && !bullet.gameObject.activeSelf)
         {
             bullet.gameObject.SetActive(true);
             bullet.transform.SetPositionAndRotation(transform.position, Quaternion.Euler(0f, 0f, transform.eulerAngles.z + angleOffset));
-            bullet.Speed = bulletSpeed;
-            bullet.Lifetime = bulletLifeTime;
+            // bullet.Speed = bulletSpeed;
+            // bullet.Lifetime = bulletLifeTime;
         }
     }
 

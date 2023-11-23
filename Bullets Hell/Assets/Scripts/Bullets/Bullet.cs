@@ -4,20 +4,32 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [Space]
+    [Header("Graphic")]
     [SerializeField] private Sprite graphic = null;
-    [SerializeField] private float lifetime = 10f;
+    [SerializeField] private Color color = new(1,1,1,1);
+    [SerializeField] private float scale = 1f;
+    [Space]
+    [Header("Attributs")]
+    [SerializeField] private float lifetime = 5f;
     [SerializeField] private float speed = 1f;
-    [SerializeField] private float rotation = 0;
     private float currentTime = 0f;
-    [SerializeField] private Vector2 spawn;
+    private Vector2 spawn;
 
     public float Lifetime { get => lifetime; set => lifetime = value; }
     public float Speed { get => speed; set => speed = value; }
-    public float Rotation { get => rotation; set => rotation = value; }
 
     private void Awake()
     {
-        GetComponent<SpriteRenderer>().sprite = graphic;
+        InitializeGraphics();
+    }
+
+    private void InitializeGraphics()
+    {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = graphic;
+        spriteRenderer.color = color;
+        transform.localScale = new Vector3(scale, scale, scale);
     }
 
     private void Start()
@@ -27,26 +39,38 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        if (currentTime >= lifetime)
-        {
-            gameObject.SetActive(false);
-            currentTime = 0f;
-            return;
-        }
-        currentTime += Time.deltaTime;
-        transform.position = Movement(currentTime);
+        UpdateLifetime();
+        MoveBullet();
     }
 
-    private Vector2 Movement(float timer)
+    private void UpdateLifetime()
+    {
+        if (currentTime >= lifetime)
+        {
+            KillBullet();
+        }
+        else
+        {
+            currentTime += Time.deltaTime;
+        }
+    }
+
+    private Vector2 CalculateMovement(float timer)
     {
         float x = timer * speed * transform.right.x;
         float y = timer * speed * transform.right.y;
-        return new Vector2(x + spawn.x, y + spawn.y);
+        return new Vector2(x, y);
+    }
+    private void MoveBullet()
+    {
+        Vector2 movement = CalculateMovement(currentTime);
+        transform.position = new Vector2(movement.x + spawn.x, movement.y + spawn.y);
     }
 
-    private void DestroyBullet()
+    public void KillBullet()
     {
-        Destroy(this.gameObject);
+        gameObject.SetActive(false);
+        currentTime = 0f;
     }
 
 }
