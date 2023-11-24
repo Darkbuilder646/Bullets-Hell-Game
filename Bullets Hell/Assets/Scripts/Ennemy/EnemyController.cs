@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour
     public float speed = 5f;
     private int index = 0;
 
+
     void Update()
     {
         MoveDown();
@@ -21,21 +22,25 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if(other.gameObject.layer == 6 && index == 1) //? Wall
+        if (other.gameObject.layer == 6 && index == 1) //? Wall
         {
             GetComponentInChildren<BulletsSpawner>().CanStartSpawn = true;
         }
-        if(other.gameObject.layer == 6 && index == 2)
+        if (other.gameObject.layer == 6 && index == 2)
         {
-            GetComponentInChildren<BulletsSpawner>().CanStartSpawn = false;
+            Destroy(this.gameObject);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.layer == 6) //? Wall
+        if (other.gameObject.layer == 6) //? Wall
         {
             index++;
+        }
+        if(other.gameObject.layer == 6 && index == 1)
+        {
+            GetComponentInChildren<BulletsSpawner>().CanStartSpawn = false;
         }
     }
 

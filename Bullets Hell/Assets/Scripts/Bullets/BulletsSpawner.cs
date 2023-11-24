@@ -32,7 +32,6 @@ public class BulletsSpawner : MonoBehaviour
     private bool canStartSpawn = false;
 
     public bool CanStartSpawn { get => canStartSpawn; set => canStartSpawn = value; }
-    public List<Bullet> BulletPool { get => bulletPool; }
 
     private void Start()
     {
@@ -102,6 +101,19 @@ public class BulletsSpawner : MonoBehaviour
         Bullet bullet = bulletPool[poolIndex];
         poolIndex = (poolIndex + 1) % poolSize;
         return bullet;
+    }
+
+    public bool AllBulletsInactive()
+    {
+        foreach (Bullet bullet in bulletPool)
+        {
+            if(bullet.gameObject.activeSelf)
+            {
+                return false;
+            }
+            return true;
+        }
+        return false;
     }
 
 }
