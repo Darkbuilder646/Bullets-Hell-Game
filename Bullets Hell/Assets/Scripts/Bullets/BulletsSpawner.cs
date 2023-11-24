@@ -29,6 +29,10 @@ public class BulletsSpawner : MonoBehaviour
     private List<Bullet> bulletPool;
     private int poolIndex = 0;
     private float timer = 0f;
+    private bool canStartSpawn = false;
+
+    public bool CanStartSpawn { get => canStartSpawn; set => canStartSpawn = value; }
+    public List<Bullet> BulletPool { get => bulletPool; }
 
     private void Start()
     {
@@ -49,6 +53,14 @@ public class BulletsSpawner : MonoBehaviour
     }
 
     private void Update()
+    {
+        if(canStartSpawn)
+        {
+            StartingSpawning();
+        }
+    }
+
+    private void StartingSpawning()
     {
         timer += Time.deltaTime;
         if (spawnerType == SpawnerType.Spiral || spawnerType == SpawnerType.DoubleSpiral)
@@ -72,14 +84,14 @@ public class BulletsSpawner : MonoBehaviour
     private void Fire(float angleOffset)
     {
         Bullet bullet = GetPooledBullet();
-        if(bullet.gameObject.activeSelf)
+        if (bullet.gameObject.activeSelf)
         {
             bullet.KillBullet();
         }
         if (bullet && !bullet.gameObject.activeSelf)
         {
-            bullet.gameObject.SetActive(true);
             bullet.transform.SetPositionAndRotation(transform.position, Quaternion.Euler(0f, 0f, transform.eulerAngles.z + angleOffset));
+            bullet.gameObject.SetActive(true);
             // bullet.Speed = bulletSpeed;
             // bullet.Lifetime = bulletLifeTime;
         }

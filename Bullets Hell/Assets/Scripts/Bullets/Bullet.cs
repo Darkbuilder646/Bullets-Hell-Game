@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     [Space]
     [Header("Graphic")]
     [SerializeField] private Sprite graphic = null;
-    [SerializeField] private Color color = new(1,1,1,1);
+    [SerializeField] private Color color = new(1, 1, 1, 1);
     [SerializeField] private float scale = 1f;
     [Space]
     [Header("Attributs")]
@@ -33,6 +33,11 @@ public class Bullet : MonoBehaviour
     }
 
     private void Start()
+    {
+        spawn = new Vector2(transform.position.x, transform.position.y);
+    }
+
+    private void OnEnable()
     {
         spawn = new Vector2(transform.position.x, transform.position.y);
     }
