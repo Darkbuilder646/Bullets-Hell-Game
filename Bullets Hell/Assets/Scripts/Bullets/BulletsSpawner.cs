@@ -14,8 +14,6 @@ public class BulletsSpawner : MonoBehaviour
     [Space]
     [Header("Bullets Value")]
     [SerializeField] private GameObject bulletPrefab;
-    // [SerializeField] private float bulletSpeed = 5f;
-    // [SerializeField] private float bulletLifeTime = 5f;
 
     [Space]
     [Header("Spawner")]
@@ -30,12 +28,14 @@ public class BulletsSpawner : MonoBehaviour
     private int poolIndex = 0;
     private float timer = 0f;
     private bool canStartSpawn = false;
+    private EnemyController enemyController;
 
     public bool CanStartSpawn { get => canStartSpawn; set => canStartSpawn = value; }
 
     private void Start()
     {
         InitializePool();
+        enemyController = GetComponentInParent<EnemyController>();
     }
 
     private void InitializePool()
@@ -53,7 +53,7 @@ public class BulletsSpawner : MonoBehaviour
 
     private void Update()
     {
-        if(canStartSpawn)
+        if(canStartSpawn && enemyController.InGameZone)
         {
             StartingSpawning();
         }
@@ -91,8 +91,6 @@ public class BulletsSpawner : MonoBehaviour
         {
             bullet.transform.SetPositionAndRotation(transform.position, Quaternion.Euler(0f, 0f, transform.eulerAngles.z + angleOffset));
             bullet.gameObject.SetActive(true);
-            // bullet.Speed = bulletSpeed;
-            // bullet.Lifetime = bulletLifeTime;
         }
     }
 
@@ -111,9 +109,17 @@ public class BulletsSpawner : MonoBehaviour
             {
                 return false;
             }
-            return true;
         }
-        return false;
+        return true;
+        
     }
 
+    public bool DestroySpawner()
+    {
+        foreach (Bullet bullet in bulletPool)
+        {
+            Destroy(bullet.gameObject);
+        }
+        return true;
+    }
 }

@@ -6,11 +6,24 @@ public class EnemyController : MonoBehaviour
 {
     public float speed = 5f;
     private int index = 0;
+    private BulletsSpawner bulletsSpawner;
+    private bool inGameZone = false;
+    private bool canDispawn = false;
 
+    public bool InGameZone { get => inGameZone; }
+
+    private void Start()
+    {
+        bulletsSpawner = GetComponentInChildren<BulletsSpawner>();
+    }
 
     void Update()
     {
         MoveDown();
+        if(canDispawn && bulletsSpawner.AllBulletsInactive())
+        {
+            DestroyEnemy();
+        }
     }
 
     void MoveDown()
@@ -24,24 +37,34 @@ public class EnemyController : MonoBehaviour
     {
         if (other.gameObject.layer == 6 && index == 1) //? Wall
         {
-            GetComponentInChildren<BulletsSpawner>().CanStartSpawn = true;
+            inGameZone = true;
+            bulletsSpawner.CanStartSpawn = true;
         }
-        if (other.gameObject.layer == 6 && index == 2)
+        if (other.gameObject.layer == 6 && index == 2) //? Exit Game Screen
         {
-            Destroy(this.gameObject);
+            canDispawn = true;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.gameObject.layer == 6 && index == 1)
+        {
+            bulletsSpawner.CanStartSpawn = false;
+        }
         if (other.gameObject.layer == 6) //? Wall
         {
             index++;
         }
-        if(other.gameObject.layer == 6 && index == 1)
+    }
+
+    public void DestroyEnemy()
+    {
+        if(bulletsSpawner.DestroySpawner())
         {
-            GetComponentInChildren<BulletsSpawner>().CanStartSpawn = false;
+            Destroy(gameObject);
         }
+
     }
 
 }
