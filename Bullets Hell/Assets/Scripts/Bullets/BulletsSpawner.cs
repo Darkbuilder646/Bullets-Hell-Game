@@ -28,14 +28,12 @@ public class BulletsSpawner : MonoBehaviour
     private int poolIndex = 0;
     private float timer = 0f;
     private bool canStartSpawn = false;
-    private EnemyController enemyController;
 
     public bool CanStartSpawn { get => canStartSpawn; set => canStartSpawn = value; }
 
     private void Start()
     {
         InitializePool();
-        enemyController = GetComponentInParent<EnemyController>();
     }
 
     private void InitializePool()
@@ -53,7 +51,7 @@ public class BulletsSpawner : MonoBehaviour
 
     private void Update()
     {
-        if(canStartSpawn && enemyController.InGameZone)
+        if(canStartSpawn)
         {
             StartingSpawning();
         }
@@ -111,7 +109,6 @@ public class BulletsSpawner : MonoBehaviour
             }
         }
         return true;
-        
     }
 
     public bool DestroySpawner()

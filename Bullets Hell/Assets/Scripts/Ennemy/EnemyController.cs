@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public float speed = 5f;
-    private int index = 0;
     private BulletsSpawner bulletsSpawner;
     private bool inGameZone = false;
     private bool canDispawn = false;
@@ -20,7 +19,7 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         MoveDown();
-        if(canDispawn && bulletsSpawner.AllBulletsInactive())
+        if (canDispawn && bulletsSpawner.AllBulletsInactive())
         {
             DestroyEnemy();
         }
@@ -33,38 +32,30 @@ public class EnemyController : MonoBehaviour
         transform.Translate(movement);
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == 6 && index == 1) //? Wall
+        if (other.gameObject.layer == 6)
         {
             inGameZone = true;
             bulletsSpawner.CanStartSpawn = true;
         }
-        if (other.gameObject.layer == 6 && index == 2) //? Exit Game Screen
-        {
-            canDispawn = true;
-        }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.layer == 6 && index == 1)
+        if (other.gameObject.layer == 6)
         {
+            inGameZone = false;
             bulletsSpawner.CanStartSpawn = false;
-        }
-        if (other.gameObject.layer == 6) //? Wall
-        {
-            index++;
+            canDispawn = true;
         }
     }
 
     public void DestroyEnemy()
     {
-        if(bulletsSpawner.DestroySpawner())
+        if (bulletsSpawner.DestroySpawner())
         {
             Destroy(gameObject);
         }
-
     }
-
 }
