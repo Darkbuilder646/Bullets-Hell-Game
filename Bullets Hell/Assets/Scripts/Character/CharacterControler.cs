@@ -3,6 +3,7 @@ using UnityEngine;
 public class CharacterControler : MonoBehaviour
 {
     [SerializeField] private float movementSpeed = 10f;
+    [SerializeField] private float movementSpeedOnFocus = 5f;
     [SerializeField] private bool isDead = false;
 
     private InputManager inputManager;
@@ -10,6 +11,7 @@ public class CharacterControler : MonoBehaviour
     private Vector2 velocity;
     private Rigidbody2D rb2D;
 
+    public InputManager InputManager { get => inputManager; }
     public Vector2 Direction { get => direction; set => direction = value; }
     public bool IsDead { get => isDead; set => isDead = value; }
 
@@ -24,10 +26,10 @@ public class CharacterControler : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isDead) 
+        if (isDead)
         {
             gameObject.SetActive(false);
-            return; 
+            return;
         }
         ComputeMovement();
     }
@@ -35,8 +37,11 @@ public class CharacterControler : MonoBehaviour
     private void ComputeMovement()
     {
         direction = inputManager.OnMove();
-        velocity = movementSpeed * Time.fixedDeltaTime * direction;
+        float currentSpeed = (inputManager.OnFocus() == 1) ? movementSpeedOnFocus : movementSpeed;
+        velocity = currentSpeed * Time.fixedDeltaTime * direction;
         rb2D.MovePosition(rb2D.position + velocity);
     }
+
+    //Todo : Invulnerability 
 
 }
