@@ -164,7 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 8069460404355615919, guid: 79f5178781be52646ad43aa3772bbd7e, type: 3}
   fireRate: 0.2
-  poolSize: 20
+  poolSize: 10
 --- !u!1 &264795254
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,7 +183,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &264795255
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -645,7 +645,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &700712990
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -11,20 +11,20 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float scale = 1f;
     [Space]
     [Header("Attributs")]
-    [SerializeField] private float lifetime = 5f;
-    [SerializeField] private float speed = 1f;
+    [SerializeField] protected float lifetime = 5f;
+    [SerializeField] protected float speed = 1f;
     private float currentTime = 0f;
     private Vector2 spawn;
 
     public float Lifetime { get => lifetime; set => lifetime = value; }
     public float Speed { get => speed; set => speed = value; }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         InitializeGraphics();
     }
 
-    private void InitializeGraphics()
+    protected void InitializeGraphics()
     {
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = graphic;
@@ -32,23 +32,23 @@ public class Bullet : MonoBehaviour
         transform.localScale = new Vector3(scale, scale, scale);
     }
 
-    private void Start()
+    protected void Start()
     {
         spawn = new Vector2(transform.position.x, transform.position.y);
     }
 
-    private void OnEnable()
+    protected void OnEnable()
     {
         spawn = new Vector2(transform.position.x, transform.position.y);
     }
 
-    private void Update()
+    protected void Update()
     {
         UpdateLifetime();
         MoveBullet();
     }
 
-    private void UpdateLifetime()
+    protected virtual void UpdateLifetime()
     {
         if (currentTime >= lifetime)
         {
@@ -60,13 +60,13 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    private Vector2 CalculateMovement(float timer)
+    protected Vector2 CalculateMovement(float timer)
     {
         float x = timer * speed * transform.up.x;
         float y = timer * speed * transform.up.y;
         return new Vector2(x, y);
     }
-    private void MoveBullet()
+    protected void MoveBullet()
     {
         Vector2 movement = CalculateMovement(currentTime);
         transform.position = new Vector2(movement.x + spawn.x, movement.y + spawn.y);
