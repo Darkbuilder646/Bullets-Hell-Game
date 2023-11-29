@@ -36,8 +36,14 @@ public class EnemyController : MonoBehaviour
     {
         if (other.gameObject.layer == 6)
         {
-            inGameZone = true;
+            // inGameZone = true;
             bulletsSpawner.CanStartSpawn = true;
+        }
+        if(other.gameObject.CompareTag("BulletPlayer"))
+        {
+            bulletsSpawner.CanStartSpawn = false;
+            canDispawn = true;
+            GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 
@@ -45,7 +51,7 @@ public class EnemyController : MonoBehaviour
     {
         if (other.gameObject.layer == 6)
         {
-            inGameZone = false;
+            // inGameZone = false;
             bulletsSpawner.CanStartSpawn = false;
             canDispawn = true;
         }

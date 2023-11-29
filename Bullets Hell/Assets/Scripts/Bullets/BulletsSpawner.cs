@@ -8,7 +8,8 @@ public class BulletsSpawner : MonoBehaviour
     {
         Straight,
         Spiral,
-        DoubleSpiral
+        DoubleSpiral,
+        QuadSpiral
     }
 
     [Space]
@@ -18,8 +19,8 @@ public class BulletsSpawner : MonoBehaviour
     [Space]
     [Header("Spawner")]
     [SerializeField] private SpawnerType spawnerType;
-    [SerializeField] private float doubleSpiralOffset = 180f;
     [SerializeField] private bool reverseRotation = false;
+    [SerializeField] private float rotationSpeed = 1f;
     [Space]
     [SerializeField] private float fireRate = 1f;
     [SerializeField] private int poolSize = 20;
@@ -51,7 +52,7 @@ public class BulletsSpawner : MonoBehaviour
 
     private void Update()
     {
-        if(canStartSpawn)
+        if (canStartSpawn)
         {
             StartingSpawning();
         }
@@ -60,16 +61,25 @@ public class BulletsSpawner : MonoBehaviour
     private void StartingSpawning()
     {
         timer += Time.deltaTime;
-        if (spawnerType == SpawnerType.Spiral || spawnerType == SpawnerType.DoubleSpiral)
+        if (spawnerType == SpawnerType.Spiral || spawnerType == SpawnerType.DoubleSpiral || spawnerType == SpawnerType.QuadSpiral)
         {
             float rotationAmount = reverseRotation ? -1f : 1f;
 
             if (spawnerType == SpawnerType.DoubleSpiral && timer >= fireRate)
             {
-                Fire(rotationAmount * doubleSpiralOffset);
+                Fire(0f);
+                Fire(180f);
+            }
+            else if (spawnerType == SpawnerType.QuadSpiral && timer >= fireRate)
+            {
+                // Tirer dans 4 directions (0, 90, 180, 270 degrés)
+                Fire(0f);
+                Fire(90f);
+                Fire(180f);
+                Fire(270f);
             }
 
-            transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + rotationAmount);
+            transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + rotationAmount * rotationSpeed);
         }
         if (timer >= fireRate)
         {
@@ -103,7 +113,7 @@ public class BulletsSpawner : MonoBehaviour
     {
         foreach (Bullet bullet in bulletPool)
         {
-            if(bullet.gameObject.activeSelf)
+            if (bullet.gameObject.activeSelf)
             {
                 return false;
             }

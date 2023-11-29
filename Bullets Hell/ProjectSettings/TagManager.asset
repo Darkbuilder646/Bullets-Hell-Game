@@ -8,6 +8,8 @@ TagManager:
   - DeathZone
   - Enemy
   - GameScreen
+  - BulletPlayer
+  - BulletEnemy
   layers:
   - Default
   - TransparentFX

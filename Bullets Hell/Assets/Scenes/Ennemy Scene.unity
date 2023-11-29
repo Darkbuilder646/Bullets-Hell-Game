@@ -163,8 +163,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 8069460404355615919, guid: 79f5178781be52646ad43aa3772bbd7e, type: 3}
-  fireRate: 0.2
-  poolSize: 10
+  fireRate: 0.1
+  poolSize: 30
 --- !u!1 &264795254
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: 264795257}
   - component: {fileID: 264795256}
   - component: {fileID: 264795255}
+  - component: {fileID: 264795259}
   - component: {fileID: 264795258}
   m_Layer: 0
   m_Name: Fairy
@@ -290,7 +291,7 @@ Transform:
   m_GameObject: {fileID: 264795254}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.53, y: 7.57, z: 0}
+  m_LocalPosition: {x: 0.53, y: 7.56, z: 0}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -309,7 +310,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0c62a548453e384da2e96320e59cfbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
+  speed: 0.75
+--- !u!50 &264795259
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264795254}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &458702729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -557,11 +585,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 162667413262220659, guid: 9e8c79686dde0c44095e14b523eb917b, type: 3}
-  spawnerType: 2
-  doubleSpiralOffset: 180
-  reverseRotation: 0
-  fireRate: 0.15
-  poolSize: 60
+  spawnerType: 3
+  reverseRotation: 1
+  rotationSpeed: 0.25
+  fireRate: 0.2
+  poolSize: 90
 --- !u!1001 &655986445
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -638,6 +666,7 @@ GameObject:
   - component: {fileID: 700712991}
   - component: {fileID: 700712990}
   - component: {fileID: 700712992}
+  - component: {fileID: 700712994}
   - component: {fileID: 700712993}
   m_Layer: 0
   m_Name: Fairy
@@ -645,7 +674,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &700712990
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -707,7 +736,7 @@ Transform:
   m_GameObject: {fileID: 700712989}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.48, y: 7.57, z: 0}
+  m_LocalPosition: {x: -2.44, y: 7.57, z: 0}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -771,7 +800,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0c62a548453e384da2e96320e59cfbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
+  speed: 0.75
+--- !u!50 &700712994
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700712989}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1231013924
 GameObject:
   m_ObjectHideFlags: 0
@@ -1018,11 +1074,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 162667413262220659, guid: 9e8c79686dde0c44095e14b523eb917b, type: 3}
-  spawnerType: 2
-  doubleSpiralOffset: 180
-  reverseRotation: 1
-  fireRate: 0.15
-  poolSize: 60
+  spawnerType: 3
+  reverseRotation: 0
+  rotationSpeed: 0.25
+  fireRate: 0.2
+  poolSize: 90
 --- !u!1001 &1783934841
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1042,6 +1098,10 @@ PrefabInstance:
     - target: {fileID: 918720981740677318, guid: 77e3d73425b8c2847b8b7bdddd1fd1e1, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1543325401031310622, guid: 77e3d73425b8c2847b8b7bdddd1fd1e1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3638290215894097192, guid: 77e3d73425b8c2847b8b7bdddd1fd1e1, type: 3}
       propertyPath: m_Layer
