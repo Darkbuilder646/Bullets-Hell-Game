@@ -62,8 +62,8 @@ public class Bullet : MonoBehaviour
 
     private Vector2 CalculateMovement(float timer)
     {
-        float x = timer * speed * transform.right.x;
-        float y = timer * speed * transform.right.y;
+        float x = timer * speed * transform.up.x;
+        float y = timer * speed * transform.up.y;
         return new Vector2(x, y);
     }
     private void MoveBullet()

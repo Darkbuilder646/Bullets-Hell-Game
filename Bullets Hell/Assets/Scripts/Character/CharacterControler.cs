@@ -7,6 +7,7 @@ public class CharacterControler : MonoBehaviour
     [SerializeField] private bool isDead = false;
 
     private InputManager inputManager;
+    private PlayerBulletsSpawner playerBulletsSpawner;
     private Vector2 direction = Vector2.zero;
     private Vector2 velocity;
     private Rigidbody2D rb2D;
@@ -18,6 +19,7 @@ public class CharacterControler : MonoBehaviour
     private void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
+        playerBulletsSpawner = GetComponent<PlayerBulletsSpawner>();
     }
     private void Start()
     {
@@ -32,6 +34,7 @@ public class CharacterControler : MonoBehaviour
             return;
         }
         ComputeMovement();
+        HandleShooting();
     }
 
     private void ComputeMovement()
@@ -42,6 +45,14 @@ public class CharacterControler : MonoBehaviour
         rb2D.MovePosition(rb2D.position + velocity);
     }
 
-    //Todo : Invulnerability 
+    private void HandleShooting()
+{
+    if (inputManager.OnFire() == 1)
+    {
+        playerBulletsSpawner.Shoot();
+    }
+}
+
+    //Todo : Invulnerability later
 
 }
