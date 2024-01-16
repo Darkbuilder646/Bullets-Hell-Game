@@ -7,7 +7,9 @@ public class CharacterControler : MonoBehaviour
     [SerializeField] private bool isDead = false;
 
     private InputManager inputManager;
+    private RespawnManager respawnManager;
     private PlayerBulletsSpawner playerBulletsSpawner;
+    private CharacterStats characterStats;
     private Vector2 direction = Vector2.zero;
     private Vector2 velocity;
     private Rigidbody2D rb2D;
@@ -20,10 +22,12 @@ public class CharacterControler : MonoBehaviour
     {
         rb2D = GetComponent<Rigidbody2D>();
         playerBulletsSpawner = GetComponent<PlayerBulletsSpawner>();
+        characterStats = GetComponent<CharacterStats>();
     }
     private void Start()
     {
         inputManager = GameManager.InputManager;
+        respawnManager = GameManager.RespawnManager;
     }
 
     private void FixedUpdate()
@@ -35,6 +39,7 @@ public class CharacterControler : MonoBehaviour
         }
         ComputeMovement();
         HandleShooting();
+        HandleBomb();
     }
 
     private void ComputeMovement()
@@ -46,13 +51,27 @@ public class CharacterControler : MonoBehaviour
     }
 
     private void HandleShooting()
-{
-    if (inputManager.OnFire() == 1)
     {
-        playerBulletsSpawner.Shoot();
+        if (inputManager.OnFire() == 1)
+        {
+            playerBulletsSpawner.Shoot();
+        }
     }
-}
 
-    //Todo : Invulnerability later
+    private void HandleBomb()
+    {
+        if(inputManager.OnBomb() == 1)
+        {
+            characterStats.RemoveBomb();
+            Debug.Log("Bomb used");
+        }
+    }
+
+    public void KillPlayer()
+    {
+        characterStats.RemoveLife();
+        isDead = true;
+        respawnManager.RespawnPlayer(this);
+    }
 
 }

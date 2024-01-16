@@ -26,5 +26,10 @@ public class InputManager : MonoBehaviour
     {
         return playerInput.actions.FindAction("Fire").ReadValue<float>();
     }
+
+    public float OnBomb() //? 0 => False / 1 => True
+    {
+        return playerInput.actions.FindAction("Bomb").ReadValue<float>();
+    }
     #endregion
 }

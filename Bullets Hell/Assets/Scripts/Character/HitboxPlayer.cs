@@ -21,8 +21,7 @@ public class HitboxPlayer : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Bullet"))
         {
-            characterControler.IsDead = true;
-            GameManager.RespawnManager.RespawnPlayer(characterControler);
+            characterControler.KillPlayer();
         }
     }
 }
