@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class OneUp : Item
@@ -11,8 +9,9 @@ public class OneUp : Item
     {
         if(other.gameObject.layer == 3)
         {
-            //? Do effect
-            Debug.Log("+ 1up");
+            StatsOfPlayer.AddLife();
+
+            GameManager.ScoreManager.AddScore(pointValue);
             Destroy(gameObject);
         }
     }

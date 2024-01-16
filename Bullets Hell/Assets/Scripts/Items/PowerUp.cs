@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PowerUp : Item
@@ -12,11 +10,10 @@ public class PowerUp : Item
     {
         if(other.gameObject.layer == 3)
         {
-            //? do effect
-            Debug.Log("Power +");
+            StatsOfPlayer.IncreaseAttack(attackIncrease);
+
             GameManager.ScoreManager.AddScore(pointValue);
             Destroy(gameObject);
         }
     }
-
 }

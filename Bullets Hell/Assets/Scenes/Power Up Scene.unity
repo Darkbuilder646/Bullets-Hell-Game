@@ -165,6 +165,25 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8069460404355615919, guid: 79f5178781be52646ad43aa3772bbd7e, type: 3}
   fireRate: 0.1
   poolSize: 30
+--- !u!114 &42893573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33510899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 495d6cbe32d6f3746ae03270aa593c4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: 1
+  maxAttack: 10
+  fullPowerMod: 0
+  life: 3
+  maxLife: 6
+  bomb: 2
+  maxBomb: 6
 --- !u!1 &190032252
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,7 +327,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f247b6107ecaa1a4190b0c55eefef692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1
+  statsOfPlayer: {fileID: 42893573}
   pointValue: 50
   activeFullPower: 1
 --- !u!1 &241869813
@@ -454,7 +474,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8dd6baf2ec885443a9d8e458642ae60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1
+  statsOfPlayer: {fileID: 42893573}
   attackIncrease: 1.5
   pointValue: 10
 --- !u!1 &264795254
@@ -1273,7 +1294,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89bbdb76159360c46ba3c7d1896771d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1
+  statsOfPlayer: {fileID: 42893573}
   pointValue: 100
 --- !u!1 &1231013924
 GameObject:
@@ -1714,8 +1736,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b583b2d883f2549be7555f4f216cef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1
+  statsOfPlayer: {fileID: 42893573}
   pointValue: 50
+  bombToAdd: 1
 --- !u!1 &1481268273
 GameObject:
   m_ObjectHideFlags: 0
@@ -1859,6 +1883,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa826442f355e994d93151d2a320388c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1
+  statsOfPlayer: {fileID: 42893573}
   pointValue: 200
 --- !u!224 &1660663686 stripped
 RectTransform:
@@ -1948,6 +1974,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4263607901265834160, guid: 77e3d73425b8c2847b8b7bdddd1fd1e1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 42893569}
+    - targetCorrespondingSourceObject: {fileID: 4263607901265834160, guid: 77e3d73425b8c2847b8b7bdddd1fd1e1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 42893573}
   m_SourcePrefab: {fileID: 100100000, guid: 77e3d73425b8c2847b8b7bdddd1fd1e1, type: 3}
 --- !u!1 &1821061371
 GameObject:
@@ -2101,7 +2130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1821061373}
-  suffix: ' pts'
+  lifeText: {fileID: 0}
+  bombText: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

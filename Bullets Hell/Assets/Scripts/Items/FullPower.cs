@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FullPower : Item
@@ -12,10 +10,10 @@ public class FullPower : Item
     {
         if (other.gameObject.layer == 3)
         {
-            //? Do effect
-            Debug.Log("Full Power Mode");
+            StatsOfPlayer.ActiveFullPowerMod(activeFullPower);
+
+            GameManager.ScoreManager.AddScore(pointValue);
             Destroy(gameObject);
         }
     }
-
 }

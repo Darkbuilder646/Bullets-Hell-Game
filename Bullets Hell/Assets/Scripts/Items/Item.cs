@@ -6,6 +6,9 @@ public class Item : MonoBehaviour
 {
     [Space, Header("Item Attributs")]
     [SerializeField] private float speed = 2f;
+    [SerializeField] private CharacterStats statsOfPlayer;
+
+    public CharacterStats StatsOfPlayer { get => statsOfPlayer; }
 
     void Update()
     {
