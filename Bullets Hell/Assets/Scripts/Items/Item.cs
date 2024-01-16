@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+    [Space, Header("Item Attributs")]
     [SerializeField] private float speed = 2f;
-    public int pointValue = 10;
-    public bool isMoving = true;
-
 
     void Update()
     {

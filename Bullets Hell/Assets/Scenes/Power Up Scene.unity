@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: 190032255}
   - component: {fileID: 190032254}
   - component: {fileID: 190032253}
+  - component: {fileID: 190032256}
   m_Layer: 0
   m_Name: Full Power
   m_TagString: Untagged
@@ -212,7 +213,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -295,6 +296,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &190032256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190032252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f247b6107ecaa1a4190b0c55eefef692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  pointValue: 50
+  activeFullPower: 1
 --- !u!1 &241869813
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,6 +322,7 @@ GameObject:
   - component: {fileID: 241869816}
   - component: {fileID: 241869815}
   - component: {fileID: 241869814}
+  - component: {fileID: 241869817}
   m_Layer: 0
   m_Name: Power Up
   m_TagString: Untagged
@@ -342,7 +359,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -425,6 +442,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &241869817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241869813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8dd6baf2ec885443a9d8e458642ae60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  attackIncrease: 1.5
+  pointValue: 10
 --- !u!1 &264795254
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,7 +952,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1397015248070596262, guid: 6e20d45e20d0f7941aec30350c24bc95, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1952111181}
   m_SourcePrefab: {fileID: 100100000, guid: 6e20d45e20d0f7941aec30350c24bc95, type: 3}
 --- !u!1 &700712989
 GameObject:
@@ -1106,6 +1141,7 @@ GameObject:
   - component: {fileID: 1126454576}
   - component: {fileID: 1126454575}
   - component: {fileID: 1126454578}
+  - component: {fileID: 1126454579}
   m_Layer: 0
   m_Name: Point
   m_TagString: Untagged
@@ -1209,7 +1245,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1225,6 +1261,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.28, y: 1.28}
   m_EdgeRadius: 0
+--- !u!114 &1126454579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126454574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89bbdb76159360c46ba3c7d1896771d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  pointValue: 100
 --- !u!1 &1231013924
 GameObject:
   m_ObjectHideFlags: 0
@@ -1532,6 +1582,7 @@ GameObject:
   - component: {fileID: 1469662081}
   - component: {fileID: 1469662080}
   - component: {fileID: 1469662079}
+  - component: {fileID: 1469662082}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: Untagged
@@ -1568,7 +1619,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1651,6 +1702,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1469662082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469662078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b583b2d883f2549be7555f4f216cef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  pointValue: 50
 --- !u!1 &1481268273
 GameObject:
   m_ObjectHideFlags: 0
@@ -1662,6 +1727,7 @@ GameObject:
   - component: {fileID: 1481268276}
   - component: {fileID: 1481268275}
   - component: {fileID: 1481268274}
+  - component: {fileID: 1481268277}
   m_Layer: 0
   m_Name: 1up
   m_TagString: Untagged
@@ -1698,7 +1764,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1781,6 +1847,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1481268277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481268273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa826442f355e994d93151d2a320388c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointValue: 200
 --- !u!224 &1660663686 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3313489875387128737, guid: 47bcd6578e2d7ab4aa844f0c18b66dc4, type: 3}
@@ -2004,6 +2083,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1821061371}
   m_CullTransparentMesh: 1
+--- !u!1 &1952111176 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1397015248070596262, guid: 6e20d45e20d0f7941aec30350c24bc95, type: 3}
+  m_PrefabInstance: {fileID: 655986445}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1952111181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952111176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6afe32a22b20e9441ba48bb258225f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 1821061373}
+  suffix: ' pts'
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

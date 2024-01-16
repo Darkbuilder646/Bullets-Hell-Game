@@ -4,6 +4,7 @@ public class GameManager : MonoBehaviour
 {
     public static InputManager InputManager { get; private set; }
     public static RespawnManager RespawnManager { get; private set; }
+    public static ScoreManager ScoreManager { get; private set; }
     private static GameManager Instance;
 
     private void Awake()
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
         
         InputManager = GetComponent<InputManager>();
         RespawnManager = GetComponent<RespawnManager>();
+        ScoreManager = GetComponent<ScoreManager>();
     }
 
     public static GameManager GetInstance()
